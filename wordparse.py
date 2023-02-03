@@ -1,18 +1,32 @@
-# Initialize new set
+# Initialize new set to make searching faster
 stopwords = set()
-with open("stop-words.txt") as f:
-# Read file
-    lines = f.readlines()
 
-    for line in lines: 
+# get all stop words
+# want to count how many times words show up in moby dick book
+# exclude stop words
+# key value format
+# top 100
+
+
+def parseWords():
+    with open("stop-words.txt") as f:
+        # Read file
+        words = f.readlines()
+
+    for word in words:
         # Use strip to get rid of extra space at beginning and end of string
-        line = line.strip()
+        word = word.strip()
         # If word doesn't start with # and isn't an empty string, add to stopwords set
-        if not line.startswith("#") and line != "":
-            stopwords.add(line)
-    # print(stopwords)
+        if not word.startswith("#") and word != "":
+            stopwords.add(word)
+    print(stopwords)
+
+
+parseWords()
 
 # Test to see if words are in the set
+
+
 def checkIfInSet(line):
     words = line.split()
     # Check if word is in stopwords set
@@ -21,4 +35,5 @@ def checkIfInSet(line):
             print("This word is in the set. Can't insert!")
         else:
             print("It's not in the set")
-checkIfInSet(line)
+    checkIfInSet(line)
+    print(line)
